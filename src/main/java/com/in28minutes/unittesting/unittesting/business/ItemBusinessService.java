@@ -32,9 +32,13 @@ public class ItemBusinessService {
 		return items;	
 	}
 
-	public Item saveItem(Item item) {
+	public Item saveItem(Item item)throws MissingParamsException {
 		Item saved =  repository.save(item);
-		saved.setName("Rushabh");
+		
+		if(saved.getName()==null || saved.getName()=="") {
+			throw new MissingParamsException(" Name MIssing");
+		}
+		
 		return saved;
 	}
 

@@ -36,11 +36,11 @@ class ItemBusinessServiceTest {
 	}
 	
 	@Test 
-	void testSaveItem() {
-		Item item = new Item(4,"item2",20,20);
+	void testSaveItem() throws MissingParamsException  {
+		Item item = new Item(4,"Rushabh ",20,20);
 		when(repository.save(item)).thenReturn(item);
 		Item saved = businessservice.saveItem(item);
-		assertEquals("item2",saved.getName());
+		assertEquals(item.getName(),saved.getName());
 		assertNotNull(saved.getId());
 	}
 	
